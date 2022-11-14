@@ -13,7 +13,7 @@ public class CouponDAO {
 		Connection con = ConnectionUtil.getConnection();
 		try {
 			PreparedStatement ps = con
-					.prepareStatement("insert into coupon " + "(code,discount,exp_date) values(?,?,?)");
+					.prepareStatement("insert into coupon (code,discount,exp_date) values(?,?,?)");
 			ps.setString(1, coupon.getCode());
 			ps.setBigDecimal(2, coupon.getDiscount());
 			ps.setString(3, coupon.getExp());
@@ -23,7 +23,7 @@ public class CouponDAO {
 		}
 	}
 
-	public void findcode(String code) {
+	public Coupon findcode(String code) {
 		Coupon coupon = new Coupon();
 		Connection con = ConnectionUtil.getConnection();
 		try {
@@ -39,5 +39,6 @@ public class CouponDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return coupon;
 	}
 }
