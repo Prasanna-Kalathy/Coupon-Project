@@ -7,6 +7,7 @@ public class Product {
 	private String name;
 	private String description;
 	private BigDecimal price;
+	private String couponCode;
 
 	public int getId() {
 		return id;
