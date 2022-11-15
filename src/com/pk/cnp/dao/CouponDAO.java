@@ -1,6 +1,7 @@
 package com.pk.cnp.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,36 +10,41 @@ import com.pk.cnp.model.Coupon;
 import com.pk.cnp.util.ConnectionUtil;
 
 public class CouponDAO {
+
 	public void save(Coupon coupon) {
-		Connection con = ConnectionUtil.getConnection();
+		Connection connection = ConnectionUtil.getConnection();
 		try {
-			PreparedStatement ps = con
+			PreparedStatement statement = connection
 					.prepareStatement("insert into coupon (code,discount,exp_date) values(?,?,?)");
-			ps.setString(1, coupon.getCode());
-			ps.setBigDecimal(2, coupon.getDiscount());
-			ps.setString(3, coupon.getExpDate());
-			ps.executeUpdate();
+			statement.setString(1, coupon.getCode());
+			statement.setBigDecimal(2, coupon.getDiscount());
+			statement.setString(3, coupon.getExpDate());
+			statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public Coupon findcode(String code) {
+	public Coupon findByCode(String code) {
 		Coupon coupon = new Coupon();
-		Connection con = ConnectionUtil.getConnection();
+		Connection connection = ConnectionUtil.getConnection();
 		try {
-			PreparedStatement ps = con.prepareStatement("select * from coupon where code=?");
-			ps.setString(1, code);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				coupon.setId(rs.getInt(1));
-				coupon.setCode(rs.getString(2));
-				coupon.setDiscount(rs.getBigDecimal(3));
-				coupon.setExpDate(rs.getString(4));
+			PreparedStatement statement = connection.prepareStatement("select * from coupon where code=?");
+			statement.setString(1, code);
+			ResultSet resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				coupon.setId(resultSet.getInt(1));
+				coupon.setCode(resultSet.getString(2));
+				coupon.setDiscount(resultSet.getBigDecimal(3));
+				coupon.setExpDate(resultSet.getString(4));
+
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return coupon;
 	}
+
 }

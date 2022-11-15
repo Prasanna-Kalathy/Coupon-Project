@@ -1,6 +1,7 @@
 package com.pk.cnp.controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 
@@ -36,7 +37,7 @@ public class ProductController extends HttpServlet {
 		String description = request.getParameter("description");
 		String price = request.getParameter("price");
 		String couponCode = request.getParameter("couponCode");
-		Coupon coupon = couponDAO.findcode(couponCode);
+		Coupon coupon = couponDAO.findByCode(couponCode);
 
 		Product product = new Product();
 		product.setName(name);

@@ -12,7 +12,7 @@
 		<table>
 			<tr>
 				<td>Coupon Code	: </td>
-				<td><input type="text" name="couponcode"></td>
+				<td><input type="text" name="couponCode"></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="action" value="find">

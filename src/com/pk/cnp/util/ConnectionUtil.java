@@ -15,7 +15,7 @@ public class ConnectionUtil {
 		try {
 			Context context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/myds");
-
+			
 			connection = dataSource.getConnection();
 			System.out.println(connection);
 		} catch (NamingException e) {
@@ -25,4 +25,5 @@ public class ConnectionUtil {
 		}
 		return connection;
 	}
+
 }

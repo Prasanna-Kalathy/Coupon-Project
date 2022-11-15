@@ -1,17 +1,22 @@
 package com.pk.cnp.controller;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 
 import com.pk.cnp.dao.CouponDAO;
 import com.pk.cnp.model.Coupon;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class CouponController
+ */
 @WebServlet("/coupons")
 public class CouponController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,14 +28,13 @@ public class CouponController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String action = request.getParameter("action");
 		if (action.equals("create")) {
 			createCoupon(request, response);
-		} else if (action.equals("find"));
-		{
+		} else if (action.equals("find")) {
 			findCoupon(request, response);
 		}
+
 	}
 
 	private void createCoupon(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -53,7 +57,7 @@ public class CouponController extends HttpServlet {
 
 	public void findCoupon(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String couponCode = request.getParameter("couponCode");
-		Coupon coupon = dao.findcode(couponCode);
+		Coupon coupon = dao.findByCode(couponCode);
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();

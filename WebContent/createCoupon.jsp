@@ -11,7 +11,7 @@
 		<table>
 			<tr>
 				<td>Coupon Code:</td>
-				<td><input type="text" name="code"></td>
+				<td><input type="text" name="couponCode"></td>
 			</tr>
 			<tr>
 				<td>Discount:</td>
@@ -19,10 +19,10 @@
 			</tr>
 			<tr>
 				<td>Expiry:</td>
-				<td><input type="text" name="expiry"></td>
+				<td><input type="text" name="expiryDate"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="action" value="Create">
+				<td><input type="hidden" name="action" value="create">
 				<td><input type="submit" name="submit" value="Save">
 				</td>
 			</tr>
