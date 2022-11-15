@@ -16,7 +16,7 @@ public class CouponDAO {
 					.prepareStatement("insert into coupon (code,discount,exp_date) values(?,?,?)");
 			ps.setString(1, coupon.getCode());
 			ps.setBigDecimal(2, coupon.getDiscount());
-			ps.setString(3, coupon.getExp());
+			ps.setString(3, coupon.getExpDate());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class CouponDAO {
 				coupon.setId(rs.getInt(1));
 				coupon.setCode(rs.getString(2));
 				coupon.setDiscount(rs.getBigDecimal(3));
-				coupon.setExp(rs.getString(4));
+				coupon.setExpDate(rs.getString(4));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

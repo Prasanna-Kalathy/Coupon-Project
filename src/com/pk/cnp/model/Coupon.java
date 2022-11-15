@@ -3,10 +3,11 @@ package com.pk.cnp.model;
 import java.math.BigDecimal;
 
 public class Coupon {
+
 	private int id;
 	private String code;
 	private BigDecimal discount;
-	private String exp;
+	private String expDate;
 
 	public int getId() {
 		return id;
@@ -32,17 +33,18 @@ public class Coupon {
 		this.discount = discount;
 	}
 
-	public String getExp() {
-		return exp;
+	public String getExpDate() {
+		return expDate;
 	}
 
-	public void setExp(String exp) {
-		this.exp = exp;
+	public void setExpDate(String expDate) {
+		this.expDate = expDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Coupon [id=" + id + ", code=" + code + ", discount=" + discount + ", exp=" + exp + "]";
+		return "<h2>Coupon Data</h2> Coupon id:" + id + "<br/>code:" + code + "<br/> discount:" + discount
+				+ "<br/>expDate" + expDate;
 	}
 
 }
